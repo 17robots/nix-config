@@ -346,7 +346,7 @@ in {
           "security.password_lifetime" = 5;
           "dom.storage.next_gen" = true;
           "network.cookie.lifetimePolicy" = 0;
-          "security.pki.sha1_enforcement_level" = 1;;
+          "security.pki.sha1_enforcement_level" = 1;
         };
       })
     ];
