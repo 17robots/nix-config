@@ -1,5 +1,5 @@
-{ self, pkgs,lib, config, inputs, ... }:
-with lib; let 
+{ self, pkgs, lib, config, inputs, ... }:
+with lib; with config; let 
   inherit (inputs.anyrun.packages.${pkgs.system}) anyrun;
   volume = let
     notify-send = pkgs.libnotify + "/bin/notify-send";
