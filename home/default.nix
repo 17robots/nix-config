@@ -27,18 +27,19 @@ with lib; let
         -u low
     fi
   '';
+  ocrScript = let
+    inherit (pkgs) grim libnotify slurp tesseract5 wl-clipboard;
+    _ = lib.getExe;
+  in
+    pkgs.writeShellScriptBin "wl-ocr" ''
+      ${_ grim} -g "$(${_ slurp})" -t ppm - | ${_ tesseract5} - - | ${wl-clipboard}/bin/wl-copy
+      ${_ libnotify} "$(${wl-clipboard}/bin/wl-paste)"
+    '';
   mkService = lib.recursiveUpdate {
     Unit.After = ["graphical-session.target"];
     Unit.PartOf = ["graphical-session.target"];
     Install.WantedBy = ["graphical-session.target"];
   };
-  ocrScript = let
-    inherit (okgs) grim libnotify slurp tesseract5 wl-clipboard
-  in
-    pkgs.writeShellScriptBin "wl-ocr" ''
-      ${_ grim} -g "$(${_ slurp})" -t ppm - | ${_ tesseract5} - - | ${wl-clipboard}/bin/wl-copy
-      ${_ libnotify} "$(${wl-clipboard}/bin/paste)"
-    '';
   browser = ["firefox.desktop"];
   associations = {
     "text/html" = browser;
