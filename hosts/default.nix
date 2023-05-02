@@ -25,7 +25,7 @@ in {
       home
       {inherit home-manager;}
       hmModule
-      hw.dell-xps-15-9500;
+      hw.dell-xps-15-9500
     ] ++ shared;
     specialArgs = {inherit inputs;};
   };
