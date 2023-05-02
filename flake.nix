@@ -2,7 +2,7 @@
   description = "";
 
   inputs = {
-    nixpkgs.url = "github:nixox/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     helix.url = "github:helix-editor/helix";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
