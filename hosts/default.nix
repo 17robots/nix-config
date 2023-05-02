@@ -1,7 +1,7 @@
 { nixpkgs, self, ...}:
 let 
   inherit (self) inputs;
-  config = "../configuration.nix";
+  config = ../configuration.nix;
   home = "../home";
   hw = inputs.nixos-hardware.nixosModules;
   hmModule = inputs.home-manager.nixosModules.home-manager;
