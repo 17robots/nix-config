@@ -2,7 +2,7 @@
 let 
   inherit (self) inputs;
   config = ../configuration.nix;
-  home = "../home";
+  home = ../home;
   hw = inputs.nixos-hardware.nixosModules;
   hmModule = inputs.home-manager.nixosModules.home-manager;
   shared = [config];
