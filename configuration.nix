@@ -91,7 +91,7 @@
       noto-fonts
       (nerdfonts.override {fonts = ["Iosevka" "JetBrainsMono"];})
     ];
-    fontConfig = {
+    fontconfig = {
       defaultFonts = {
         monospace = [
           "Iosevka Term"
