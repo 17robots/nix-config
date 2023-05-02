@@ -481,7 +481,7 @@ in {
           spacing = 7;
           modules-left = [];
           modules-center = [];
-          modules-right = ["clock", "pulseaudio", "battery"];
+          modules-right = ["clock" "pulseaudio" "battery"];
           clock = {
             format = ''
               {:%H
