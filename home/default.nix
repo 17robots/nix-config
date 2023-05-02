@@ -1,4 +1,4 @@
-{ self, pkgs, lib, config, inputs, ... }:
+{ self, pkgs, lib, config, inputs, options, ... }:
 with lib; let 
   inherit (inputs.anyrun.packages.${pkgs.system}) anyrun;
   volume = let
@@ -646,7 +646,7 @@ in {
     inputs.hyprland.homeManagerModules.default
     inputs.nix-index-db.hmModules.nix-index
   ];
-  option = {
+  options = {
     gtk = {
       enable = true;
       theme = {
