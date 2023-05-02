@@ -428,7 +428,7 @@ in {
           indent-guides = {
             render = true;
           };
-          gutters = ["diagnostics", "line-numbers", "spacer", "diff"];
+          gutters = ["diagnostics" "line-numbers" "spacer" "diff"];
           statusline = {
             left = [];
             center = [];
