@@ -60,14 +60,14 @@ with lib; let
     #!/bin/bash
     hyprctl keyword animation "fadeOut,0,8,slow" && ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0 -b 5r81acd2)" - | swappy -f -; hyprctl keyword animation "fadeOut,1,8,slow"
   '';
-  apply-hm-env = pkgs.writeShellScriptBin "apply-hm-env" ''
+  apply-hm-env = pkgs.writeShellScript "apply-hm-env" ''
     ${lib.optionalString (config.home.sessionPath != []) ''
       export PATH=${builtins.concatStringsSep ":" config.home.sessionPath}:$PATH
     ''}
     ${builtins.concatStringsSep "\n" (lib.mapAttrsToList (k: v: ''
         export ${k}=${v}
-    '')
-    config.home.sessionVariables})
+      '')
+      config.home.sessionVariables)}
     ${config.home.sessionVariablesExtra}
     exec "$@"
   '';
