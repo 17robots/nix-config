@@ -1,4 +1,4 @@
-{ inputs, pkgs, config, lib, self, ... }:
+{ inputs, pkgs, config, lib, self, config, ... }:
 with lib; let 
   inherit (inputs.anyrun.packages.${pkgs.system}) anyrun;
   volume = let
