@@ -89,7 +89,7 @@
       jetbrains-mono
       iosevka-bin
       noto-fonts
-      (nerdfonts.override {fonts = ["Iosevka", "JetBrainsMono"];})
+      (nerdfonts.override {fonts = ["Iosevka" "JetBrainsMono"];})
     ];
     fontConfig = {
       defaultFonts = {
