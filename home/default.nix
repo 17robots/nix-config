@@ -81,36 +81,6 @@ with lib; let
   '';
 in {
   config = {
-    gtk = {
-      enable = true;
-      theme = {
-        name = "";
-        package = pkgs.catppuccin-gtk.override {
-          size = "compact";
-          tweaks = ["black" "rimless"];
-        };
-      };
-      iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.papirus-icon-theme;
-      };
-      font = {
-        name = "Lexend";
-        size = 13;
-      };
-      gtk3.extraConfig = {
-        gtk-xft-antialias = 1;
-        gtk-xft-hinting = 1;
-        gtk-xft-hintstype = "hintslight";
-        gtk-xft-rgba = "rgb";
-      };
-      gtk2.extraConfig = ''
-        gtk-xft-antialias = 1
-        gtk-xft-hinting = 1
-        gtk-xft-hintstype = "hintslight"
-        gtk-xft-rgba = "rgb"
-      '';
-    };
     home = {
       stateVersion = "22.11";
       packages = with pkgs; [
@@ -676,4 +646,36 @@ in {
     inputs.hyprland.homeManagerModules.default
     inputs.nix-index-db.hmModules.nix-index
   ];
+  option = {
+    gtk = {
+      enable = true;
+      theme = {
+        name = "";
+        package = pkgs.catppuccin-gtk.override {
+          size = "compact";
+          tweaks = ["black" "rimless"];
+        };
+      };
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
+      font = {
+        name = "Lexend";
+        size = 13;
+      };
+      gtk3.extraConfig = {
+        gtk-xft-antialias = 1;
+        gtk-xft-hinting = 1;
+        gtk-xft-hintstype = "hintslight";
+        gtk-xft-rgba = "rgb";
+      };
+      gtk2.extraConfig = ''
+        gtk-xft-antialias = 1
+        gtk-xft-hinting = 1
+        gtk-xft-hintstype = "hintslight"
+        gtk-xft-rgba = "rgb"
+      '';
+    };
+  };
 }
