@@ -569,7 +569,7 @@ in {
   };
   imports = [
     inputs.hyprland.homeManagerModules.default
-    inputs.nix-index-db.hmModules.nix-index
+    # inputs.nix-index-db.hmModules.nix-index
   ];
   options = {
     gtk = {
