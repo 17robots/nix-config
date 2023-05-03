@@ -640,6 +640,9 @@ in {
         defaultApplications = associations;
         enable = true;
       };
+      userDirs = {
+        enable = true;
+      };
     };
   };
   imports = [
