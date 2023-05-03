@@ -89,12 +89,6 @@ in {
         run-as-service
         screenshot
         volume
-        (symlinkJoin {
-          name = ledger-live-desktop.name;
-          paths = [ledger-live-desktop];
-          buildInputs = [makeWrapper];
-          postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
-        })
         (wrapFirefox firefox-esr-102-unwrapped {
           forceWayland = true;
           CaptivePortal = false;
