@@ -1,7 +1,7 @@
 { nixpkgs, self, ...}:
 let 
   inherit (self) inputs;
-  config = ../configuration.nix;
+  main = ./configuration.nix;
   home = ../home;
   hw = inputs.nixos-hardware.nixosModules;
   hmModule = inputs.home-manager.nixosModules.home-manager;
@@ -21,7 +21,7 @@ in {
     modules = [
       {networking.hostName = "nixos";}
       ./laptop/hardware-configuration.nix
-      config
+      main
       home
       {inherit home-manager;}
       hmModule
