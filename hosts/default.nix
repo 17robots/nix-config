@@ -5,7 +5,7 @@ let
   home = ../home;
   hw = inputs.nixos-hardware.nixosModules;
   hmModule = inputs.home-manager.nixosModules.home-manager;
-  shared = [config];
+  shared = [main];
 
   home-manager = {
     useUserPackages = true;
