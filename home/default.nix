@@ -563,6 +563,9 @@ in {
       systemdIntegration = true;
       extraConfig = builtins.readFile ./hyprland/hyprland.conf;
     };
+    xdg = {
+      cacheHome = "$HOME/.cache";
+    };
   };
   imports = [
     inputs.hyprland.homeManagerModules.default
