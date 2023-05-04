@@ -320,7 +320,7 @@ in {
       XCURSOR_SIZE = "16";
     };
   };
-  programs = {
+  config.programs = {
     bat = {
       enable = true;
       config.pager = "less -FR";
@@ -465,7 +465,7 @@ in {
       };
     };
   };
-  services = {
+  config.services = {
     dunst = {
       enable = true;
       iconTheme = {
@@ -532,7 +532,7 @@ in {
       enableSshSupport = true;
     };
   };
-  systemd.user = {
+  config.systemd.user = {
     services = {
       cliphist = mkService {
         Unit.Description = "Clipboard History";
@@ -556,7 +556,7 @@ in {
       };
     };
   };
-  wayland.windowManager.hyprland = {
+  config.wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.default;
     systemdIntegration = true;
