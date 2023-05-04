@@ -80,7 +80,7 @@ with lib; let
       bash -1c "exec ${apply-hm-env} $@"
   '';
 in {
-  home = {
+  config.home = {
     stateVersion = "22.11";
     packages = with pkgs; [
       libsForQt5.qtstyleplugin-kvantum
