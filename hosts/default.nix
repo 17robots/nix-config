@@ -19,7 +19,6 @@ in {
       ./configuration.nix
       ../home
       {inherit home-manager;}
-      inputs.home-manager.nixosModules.home-manager
       hw.dell-xps-15-9500
     ];
     specialArgs = {inherit inputs;};
