@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ self, config, pkgs, lib, inputs, ... }:
 {
   boot.loader = {
     systemd-boot.enable = true;
@@ -16,6 +16,7 @@
       "nix/flake-channels/home-manager".source = inputs.home-manager;
     };
     systemPackages = with pkgs; [
+      inputs.anyrun
       appimage-run
       bat
       black

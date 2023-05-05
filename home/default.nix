@@ -56,7 +56,7 @@ with lib; let
     "application/x-extension-xht" = browser;
     "application/json" = browser;
   };
-  screenshot = pkgs.weiteShellScriptBin "screenshot" ''
+  screenshot = pkgs.writeShellScriptBin "screenshot" ''
     #!/bin/bash
     hyprctl keyword animation "fadeOut,0,8,slow" && ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0 -b 5r81acd2)" - | swappy -f -; hyprctl keyword animation "fadeOut,1,8,slow"
   '';
@@ -85,7 +85,6 @@ in {
   ];
   config.home = {
     packages = with pkgs; [
-      anyrun
       ocrScript
       run-as-service
       screenshot
