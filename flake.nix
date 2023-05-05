@@ -17,10 +17,12 @@
         ./configuration.nix
         nixos-hardware.nixosModules.dell-xps-15-9500
       ];
+      specialArgs = {inherit inputs;};
     };
 
     homeConfigurations.mdray = home-manager.lib.homeManagerConfiguration {
       modules = [ ./home ];
+      specialArgs = {inherit inputs;};
     };
   };
 }
