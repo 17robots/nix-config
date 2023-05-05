@@ -14,12 +14,14 @@
       modules = [
         ./configuration.nix
         nixos-hardware.nixosModules.dell-xps-15-9500
+        home-manager.nixosModules.home-manager {
+          home-manager = {
+            useUserPackages = true;
+            useGlobalPkgs = true;
+            users.mdray = ./home;
+          };
+        }
       ];
-      specialArgs = {inherit (self) inputs;};
-    };
-
-    homeConfigurations.mdray = home-manager.lib.homeManagerConfiguration {
-      modules = [ ./home ];
       specialArgs = {inherit (self) inputs;};
     };
   };

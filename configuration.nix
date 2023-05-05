@@ -17,12 +17,14 @@
     };
     systemPackages = with pkgs; [
       appimage-run
+      bat
       black
       brightnessctl
       cached-nix-shell
       cargo
       comma
       dconf
+      dircolors
       fd
       ffmpeg
       fzf
@@ -35,6 +37,7 @@
       grim
       hyperfine
       hyprland
+      libsForQt5.qtstylepluginin-kvantum
       libnotify
       libreoffice-fresh-unwrapped
       macchina
@@ -222,7 +225,6 @@
       jack.enable = true;
       pulse.enable = true;
     };
-    upower.enable = true;
   };
   sound = {
     enable = true;
