@@ -6,6 +6,7 @@
     };
     nixos-hardware.url = "github:Nixos/nixos-hardware/master";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
   };
   outputs = { self, nixpkgs, home-manager, nixos-hardware }: {
     nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
