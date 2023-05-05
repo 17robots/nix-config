@@ -80,7 +80,7 @@ with lib; let
       bash -1c "exec ${apply-hm-env} $@"
   '';
 in {
-  home = {
+  config.home = {
     packages = with pkgs; [
       anyrun
       ocrScript

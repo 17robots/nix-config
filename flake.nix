@@ -23,7 +23,7 @@
           home-manager = {
             useUserPackages = true;
             useGlobalPkgs = true;
-            users.mdray = {inherit ./home;};
+            users.mdray = ./home;
           };
         }
       ];
