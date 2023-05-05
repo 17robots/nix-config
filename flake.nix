@@ -1,14 +1,18 @@
 {
   inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:Nixos/nixos-hardware/master";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
   };
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, xdg-portal-hyprland }: {
+  outputs = { self, anyrun, nixpkgs, home-manager, nixos-hardware, xdg-portal-hyprland }: {
     nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -22,7 +26,6 @@
           };
         }
       ];
-      specialArgs = {inherit (self) inputs;};
     };
   };
 }

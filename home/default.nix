@@ -81,8 +81,8 @@ with lib; let
   '';
 in {
   home = {
-    stateVersion = "22.11";
     packages = with pkgs; [
+      anyrun
       ocrScript
       run-as-service
       screenshot
@@ -96,6 +96,7 @@ in {
     sessionVariables = {
       XCURSOR_SIZE = "16";
     };
+    stateVersion = "22.11";
   };
   programs = {
     bat = {
