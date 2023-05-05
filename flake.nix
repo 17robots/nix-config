@@ -14,13 +14,13 @@
     nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        { import(./configuration.nix) }
+        { import ./configuration.nix }
         nixos-hardware.nixosModules.dell-xps-15-9500
       ];
     };
 
     homeConfigurations.mdray = home-manager.lib.homeManagerConfiguration {
-      modules = [ { import(./home) } ];
+      modules = [ { import ./home } ];
     }
   };
 }
