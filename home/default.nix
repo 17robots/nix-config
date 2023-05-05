@@ -549,10 +549,13 @@ in {
         };
       };
     };
-    targets.tray = {
-      Unit = {
-        Description = "Home Manager System Tray";
-        Requires = ["graphical-session-pre.target"];
+    target = {
+      hyprland-session.wants = [ "xdg-desktop-autostart.target" ];
+      tray = {
+        Unit = {
+          Description = "Home Manager System Tray";
+          Requires = ["graphical-session-pre.target"];
+        };
       };
     };
   };
