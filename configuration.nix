@@ -34,6 +34,7 @@
       gopls
       grim
       hyperfine
+      hyprland
       libnotify
       libreoffice-fresh-unwrapped
       macchina
@@ -236,6 +237,9 @@
     unitConfig = { After = lib.mkOverride 0 ["multi-user.target"]; };
   };
   time.timeZone = "US/Eastern";
+  user.targets = {
+    hyprland-session.wants = [ "xdg-desktop-autostart.target" ];
+  };
   users.users.mdray = {
     extraGroups = [
       "audio"
