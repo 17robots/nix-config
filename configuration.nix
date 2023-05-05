@@ -136,7 +136,7 @@
   };
   nix = {
     daemonCPUSchedPolicy = "idle";
-    daemonISOChedClass = "idle";
+    daemonISOSchedClass = "idle";
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
