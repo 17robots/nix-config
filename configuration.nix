@@ -135,8 +135,6 @@
     firewall.enable = false;
   };
   nix = {
-    daemonCPUSchedPolicy = "idle";
-    daemonISOSchedClass = "idle";
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
