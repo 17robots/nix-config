@@ -80,7 +80,7 @@ with lib; let
       bash -1c "exec ${apply-hm-env} $@"
   '';
 in {
-  config.home = {
+  home = {
     stateVersion = "22.11";
     packages = with pkgs; [
       libsForQt5.qtstyleplugin-kvantum
@@ -320,7 +320,7 @@ in {
       XCURSOR_SIZE = "16";
     };
   };
-  config.programs = {
+  programs = {
     bat = {
       enable = true;
       config.pager = "less -FR";
@@ -465,7 +465,7 @@ in {
       };
     };
   };
-  config.services = {
+  services = {
     dunst = {
       enable = true;
       iconTheme = {
@@ -532,7 +532,7 @@ in {
       enableSshSupport = true;
     };
   };
-  config.systemd.user = {
+  systemd.user = {
     services = {
       cliphist = mkService {
         Unit.Description = "Clipboard History";
@@ -556,7 +556,7 @@ in {
       };
     };
   };
-  config.wayland.windowManager.hyprland = {
+  wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.default;
     systemdIntegration = true;
