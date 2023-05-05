@@ -200,7 +200,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet} --time -c Hyprland";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time -c Hyprland";
           user = "mdray";
         };
       };
