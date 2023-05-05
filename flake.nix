@@ -23,10 +23,7 @@
           home-manager = {
             useUserPackages = true;
             useGlobalPkgs = true;
-            users.mdray = {self, pkgs, lib, config, inputs, options,...}: {
-              home.stateVersion = "22.11";
-            };
-            # users.mdray = import ./home/default.nix;
+            users.mdray = {inherit ./home;};
           };
         }
       ];
