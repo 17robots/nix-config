@@ -122,6 +122,9 @@
     };
   };
   i18n.defaultLocale = "en_US.UTF-8";
+  imports = [
+    ./hosts/laptop/hardware-configuration.nix
+  ];
   networking = {
     hostName = "nixos";
     networkmanager = {
