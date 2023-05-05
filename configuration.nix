@@ -129,7 +129,7 @@
     hostName = "nixos";
     networkmanager = {
       enable = true;
-      unmanaged = "true";
+      unmanaged = true;
       wifi.macAddress = "random";
     };
     firewall.enable = false;
