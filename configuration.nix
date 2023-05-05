@@ -19,7 +19,7 @@
       appimage-run
       black
       brightnessctl
-      cached-nix-shekk
+      cached-nix-shell
       cargo
       comma
       dconf
