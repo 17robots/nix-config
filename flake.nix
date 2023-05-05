@@ -21,6 +21,6 @@
 
     homeConfigurations.mdray = home-manager.lib.homeManagerConfiguration {
       modules = [ ./home ];
-    }
+    };
   };
 }
