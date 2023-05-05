@@ -4,7 +4,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos--hardware.url = "github:Nixos/nixos-hardware/master";
+    nixos-hardware.url = "github:Nixos/nixos-hardware/master";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
   outputs = { self, nixpkgs, home-manager, nixos-hardware }: let 
