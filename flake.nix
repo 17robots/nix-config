@@ -27,9 +27,7 @@
           home-manager = {
             useUserPackages = true;
             useGlobalPkgs = true;
-            users.mdray = {inputs, ...}: {
-              home.stateVersion = "22.11";
-            };
+            users.mdray = ./home.nix;
           };
         }
       ];
