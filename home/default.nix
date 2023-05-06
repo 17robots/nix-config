@@ -43,7 +43,7 @@ in {
     };
     stateVersion = "22.11";
   };
-  programs = {
+  config.programs = {
     bat = {
       enable = true;
       config.pager = "less -FR";
