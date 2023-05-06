@@ -1,65 +1,11 @@
 { self, pkgs, lib, config, inputs, options, ... }:
 with lib; let 
   inherit (inputs.anyrun.packages.${pkgs.system}) anyrun;
-  volume = let
-    notify-send = pkgs.libnotify + "/bin/notify-send";
-    pamixer = lib.getExe pkgs.pamixer;
-  in pkgs.writeShellScriptBin "volume" ''
-    #!/bin/sh
-
-    ${pamixer} "$@"
-
-    volume="$(${pamixer} --get-volume-human)"
-
-    if [ "$volume = "muted"]; then
-      ${notify-send} -r 69 \
-        -a "Volume" \
-        "Muted" \
-        -i ${./mute.svg} \
-        -t 888
-        -u low
-    else
-      ${notify-send} -r 69 \
-        -a "Volume" "Currently at $volume" \
-        -h int:value:"$volume" \
-        -i ${./volume.svg} \
-        -t 888
-        -u low
-    fi
-  '';
-  ocrScript = let
-    inherit (pkgs) grim libnotify slurp tesseract5 wl-clipboard;
-    _ = lib.getExe;
-  in
-    pkgs.writeShellScriptBin "wl-ocr" ''
-      ${_ grim} -g "$(${_ slurp})" -t ppm - | ${_ tesseract5} - - | ${wl-clipboard}/bin/wl-copy
-      ${_ libnotify} "$(${wl-clipboard}/bin/wl-paste)"
-    '';
   mkService = lib.recursiveUpdate {
     Unit.After = ["graphical-session.target"];
     Unit.PartOf = ["graphical-session.target"];
     Install.WantedBy = ["graphical-session.target"];
   };
-  browser = ["firefox.desktop"];
-  associations = {
-    "text/html" = browser;
-    "x-scheme-handler/http" = browser;
-    "x-scheme-handler/https" = browser;
-    "x-scheme-handler/ftp" = browser;
-    "x-scheme-handler/about" = browser;
-    "x-scheme-handler/unknown" = browser;
-    "application/x-extension-htm" = browser;
-    "application/x-extension-html" = browser;
-    "application/x-extension-shtml" = browser;
-    "application/xhtml-xml" = browser;
-    "application/x-extension-xhtml" = browser;
-    "application/x-extension-xht" = browser;
-    "application/json" = browser;
-  };
-  screenshot = pkgs.writeShellScriptBin "screenshot" ''
-    #!/bin/bash
-    hyprctl keyword animation "fadeOut,0,8,slow" && ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0 -b 5r81acd2)" - | swappy -f -; hyprctl keyword animation "fadeOut,1,8,slow"
-  '';
   apply-hm-env = pkgs.writeShellScript "apply-hm-env" ''
     ${lib.optionalString (config.home.sessionPath != []) ''
       export PATH=${builtins.concatStringsSep ":" config.home.sessionPath}:$PATH
@@ -85,9 +31,7 @@ in {
   ];
   config.home = {
     packages = with pkgs; [
-      ocrScript
       run-as-service
-      screenshot
     ];
     pointerCursor = {
       package = pkgs.catppuccin-cursors.mochaDark;
@@ -245,17 +189,9 @@ in {
     dunst = {
       enable = true;
       iconTheme = {
-        package = self.packages.${pkgs.system}.catppuccin-folders;
         name = "Papirus";
+        package = pkgs.papirus-icon-theme;
       };
-      package = pkgs.dunst.overrideAttrs (oldAttrs: {
-        src = pkgs.fetchFromGitHub {
-          owner = "sioodmy";
-          repo = "dunst";
-          rev = "6477864bd870dc74f9cf76bb539ef89051554525";
-          sha256 = "FCoGrYipNOZRvee6Ks5PQB5y2IvN+ptCAfNuLXcD8Sc=";
-        };
-      });
       settings = {
         global = {
           frame_color = "#f4b8e4";
@@ -373,6 +309,7 @@ in {
       '';
     };
     xdg = {
+      enable = true;
       configFile = {
         "anyrun/config.ron".text = ''
           Config(
@@ -437,12 +374,6 @@ in {
           catppuccin=Dolphin, dolphin, Nextcloud, nextcloud, qt5ct, org.kde.dolphin, org.kde.kalendar, kalendar, Kalendar, qbittorent, org.qbittorrent.qBittorent
         '';
         "waybar/style.css".text = import ./waybar/style.nix;    
-      };
-      enable = true;
-      mimeApps = {
-        associations.added = associations;
-        defaultApplications = associations;
-        enable = true;
       };
       userDirs = {
         enable = true;
