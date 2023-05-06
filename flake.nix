@@ -16,7 +16,7 @@
     nixos-hardware.url = "github:Nixos/nixos-hardware/master";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
   };
-  outputs = { nixpkgs, home-manager, nixos-hardware, ... }: {
+  outputs = { inputs, self, nixpkgs, home-manager, nixos-hardware, ... }: {
     nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -28,6 +28,10 @@
             useUserPackages = true;
             useGlobalPkgs = true;
             users.mdray = ./home;
+            extraSpecialArgs = {
+              inherit inputs;
+              inherit self;
+            };
           };
         }
       ];
