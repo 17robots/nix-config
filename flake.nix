@@ -28,10 +28,6 @@
             useUserPackages = true;
             useGlobalPkgs = true;
             users.mdray = ./home;
-            extraSpecialArgs = {
-              inherit inputs;
-              inherit self;
-            };
           };
         }
       ];
