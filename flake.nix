@@ -9,6 +9,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:Nixos/nixos-hardware/master";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
   };

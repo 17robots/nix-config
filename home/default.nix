@@ -1,5 +1,5 @@
 { self, pkgs, lib, config, inputs, options, ... }:
-with lib; let 
+with lib; let
   mkService = lib.recursiveUpdate {
     Unit.After = ["graphical-session.target"];
     Unit.PartOf = ["graphical-session.target"];
