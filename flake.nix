@@ -27,7 +27,9 @@
           home-manager = {
             useUserPackages = true;
             useGlobalPkgs = true;
-            users.mdray = ./home;
+            users.mdray = {...}, {
+              home.stateVersion = "22.11";
+            };
           };
         }
       ];
