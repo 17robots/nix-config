@@ -27,7 +27,9 @@
           home-manager = {
             useUserPackages = true;
             useGlobalPkgs = true;
-            users.mdray = import ./home;
+            users.mdray = {...}: {
+              imports = [./home];
+            };
           };
         }
       ];
