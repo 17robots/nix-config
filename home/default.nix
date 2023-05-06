@@ -31,6 +31,7 @@ in {
   ];
   config.home = {
     packages = with pkgs; [
+      anyrun
       run-as-service
     ];
     pointerCursor = {
