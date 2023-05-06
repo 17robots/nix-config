@@ -272,7 +272,6 @@ in {
   };
   config.wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.default;
     systemdIntegration = true;
     extraConfig = builtins.readFile ./hyprland/hyprland.conf;
   };
