@@ -28,7 +28,7 @@ in {
   imports = [
     inputs.hyprland.homeManagerModules.default
   ];
-  config.home = {
+  home = {
     packages = with pkgs; [
       run-as-service
     ];
@@ -43,7 +43,7 @@ in {
     };
     stateVersion = "22.11";
   };
-  config.programs = {
+  programs = {
     bat = {
       enable = true;
       config.pager = "less -FR";
@@ -184,7 +184,7 @@ in {
       };
     };
   };
-  config.services = {
+  services = {
     dunst = {
       enable = true;
       iconTheme = {
@@ -243,7 +243,7 @@ in {
       enableSshSupport = true;
     };
   };
-  config.systemd.user = {
+  systemd.user = {
     services = {
       cliphist = mkService {
         Unit.Description = "Clipboard History";
@@ -270,7 +270,7 @@ in {
       };
     };
   };
-  config.wayland.windowManager.hyprland = {
+  wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
     extraConfig = builtins.readFile ./hyprland/hyprland.conf;
