@@ -1,6 +1,5 @@
 { self, pkgs, lib, config, inputs, options, ... }:
 with lib; let 
-  inherit (inputs.anyrun.packages.${pkgs.system}) anyrun;
   mkService = lib.recursiveUpdate {
     Unit.After = ["graphical-session.target"];
     Unit.PartOf = ["graphical-session.target"];
@@ -31,7 +30,6 @@ in {
   ];
   config.home = {
     packages = with pkgs; [
-      anyrun
       run-as-service
     ];
     pointerCursor = {

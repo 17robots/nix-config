@@ -16,6 +16,7 @@
       "nix/flake-channels/home-manager".source = inputs.home-manager;
     };
     systemPackages = with pkgs; [
+      pkgs.anyrun
       appimage-run
       bat
       black
