@@ -38,6 +38,7 @@ in
       ffmpeg
       fzf
       gcc
+      gh
       gnumake
       go
       gping
