@@ -1,4 +1,7 @@
-{ pkgs, lib, inputs, ... }:
+{ config, inputs, pkgs, lib, ... }:
+let
+  inherit (inputs.anyrun.packages.${pkgs.system}) anyrun;
+in
 {
   boot.loader = {
     systemd-boot.enable = true;
@@ -16,49 +19,70 @@
       "nix/flake-channels/home-manager".source = inputs.home-manager;
     };
     systemPackages = with pkgs; [
-      inputs.anyrun
+      anyrun
       appimage-run
       bat
-      black
       brightnessctl
       cached-nix-shell
-      cargo
       comma
+      ctop
+      curlie
       dconf
-      dircolors
+      ddgr
+      dua
+      duf
+      dunst
+      exa
       fd
+      fdupes
       ffmpeg
       fzf
       gcc
-      git
-      gitflow
+      gnumake
       go
-      gopass
-      gopls
+      gping
       grim
       hyperfine
-      hyprland
-      libsForQt5.qtstylepluginin-kvantum
+      jq
+      just
       libnotify
       libreoffice-fresh-unwrapped
+      libsixel
       macchina
+      man
+      most
+      nodejs_20
+      nodePackages_latest.npm
+      nodePackages_latest.pnpm
+      notion-app-enhanced
+      nushell
       pamixer
       pngquant
-      python39Packages.requests
+      procs
       ripgrep
-      rust-analyzer
+      rm-improved
+      rustup
+      scc
       slurp
+      speedtest-cli
+      starship
       swappy
+      swaybg
       tdesktop
+      tldr
+      topgrade
       transmission-gtk
+      tre-command
       unzip
+      waybar
       wf-recorder
       wl-clipboard
       xh
+      yarn
     ];
     variables = {
       BROWSER = "firefox";
-      EDITOR = "hx";
+      EDITOR = "nvim";
       NIXOS_OZONE_WL = "1";
       __GL_GSYNC_ALLOWED = "0";
       __GL_VRR_ALLOWED = "0";
@@ -110,6 +134,7 @@
     };
   };
   hardware = {
+    bluetooth.enable = true;
     opengl = {
       enable = true;
       driSupport = true;
@@ -152,7 +177,6 @@
       auto-optimise-store = true;
       allowed-users = ["@wheel"];
       trusted-users = ["@wheel"];
-      sandbox = true;
       max-jobs = "auto";
       keep-going = true;
       log-lines = 20;
@@ -160,7 +184,7 @@
     };
   };
   nixpkgs.config = {
-    allowUnfree = false;
+    allowUnfree = true;
     allowBroken = true;
     allowUnfreePredicate = pkg:
       builtins.elem (lib.getName pkg) [];
@@ -185,7 +209,6 @@
         gdk-pixbuf
       ];
     };
-    thefuck.enable = true;
   };
   security = {
     apparmor = {
@@ -239,7 +262,6 @@
     serviceConfig = { Type = "idle"; };
     unitConfig = { After = lib.mkOverride 0 ["multi-user.target"]; };
   };
-  time.timeZone = "US/Eastern";
   users.users.mdray = {
     extraGroups = [
       "audio"
@@ -260,6 +282,7 @@
     isNormalUser = true;
     shell = pkgs.nushell;
   };
+  time.timeZone = "US/Eastern";
   virtualisation = {
     docker.enable = true;
     podman.enable = true;
@@ -269,7 +292,7 @@
     wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      inputs.xdg-portal-hyprland
+      inputs.xdg-portal-hyprland.packages.${pkgs.system}.default
     ];
   };
 }

@@ -14,7 +14,7 @@ in ''
     background-color: #1e1e2e;
     border-radius: 0px;
     color: #cdd6f4;
-    font-size: 16px;
+    font-size: 10px;
     /* transition-property: background-color; */
     transition-duration: 0.5s;
   }
@@ -54,7 +54,7 @@ in ''
   #custom-power {
       color: #f38ba8;
       margin: 7px;
-      font-size: 24px;
+      font-size: 10px;
   }
 
   #workspaces button.active {
