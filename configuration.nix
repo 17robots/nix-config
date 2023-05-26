@@ -29,6 +29,7 @@ in
       curlie
       dconf
       ddgr
+      docker-compose
       dua
       duf
       dunst
@@ -59,6 +60,7 @@ in
       nushell
       pamixer
       pngquant
+      podman-compose
       procs
       ripgrep
       rm-improved
