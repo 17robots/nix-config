@@ -11,10 +11,10 @@
     anyrun.url  = "github:Kirottu/anyrun";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs";
+    # hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.inputs.nixpkgs.follows = "nixpkgs";
     
-    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    # xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
   };
 
   outputs = inputs@{ anyrun, nixpkgs, nixos-hardware, home-manager, ... }: let 

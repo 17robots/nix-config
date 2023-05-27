@@ -19,9 +19,10 @@ in
       "nix/flake-channels/home-manager".source = inputs.home-manager;
     };
     systemPackages = with pkgs; [
-      anyrun
+      # anyrun
       appimage-run
       bat
+      bemenu
       brightnessctl
       cached-nix-shell
       comma
@@ -29,6 +30,7 @@ in
       curlie
       dconf
       ddgr
+      discord
       docker-compose
       dua
       duf
@@ -52,11 +54,11 @@ in
       libsixel
       macchina
       man
+      mesa
       most
       nodejs_20
       nodePackages_latest.npm
       nodePackages_latest.pnpm
-      notion-app-enhanced
       nushell
       pamixer
       pngquant
@@ -102,8 +104,8 @@ in
       QT_QPA_PLATFORM_THEME = "qt5ct";
       QT_STYLE_OVERRIDE = "kvantum";
       MOZ_ENABLE_WAYLAND = "1";
-      WLR_BACKEND = "vulkan";
-      WLR_RENDERER = "vulkan";
+      # WLR_BACKEND = "vulkan";
+      # WLR_RENDERER = "vulkan";
       WLR_NO_HARDWARE_CURSORS = "1";
       XDG_SESSION_TYPE = "wayland";
       XDG_CONFIG_HOME = "$HOME/.config";
@@ -231,7 +233,7 @@ in
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time -c Hyprland";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time -c sway";
           user = "mdray";
         };
       };
@@ -295,7 +297,7 @@ in
     wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      inputs.xdg-portal-hyprland.packages.${pkgs.system}.default
+      # inputs.xdg-portal-hyprland.packages.${pkgs.system}.default
     ];
   };
 }

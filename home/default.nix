@@ -28,9 +28,7 @@ apply-hm-env = pkgs.writeShellScript "apply-hm-env" ''
       bash -lc "exec ${apply-hm-env} $@"
   '';
   in {
-  imports = [
-    inputs.hyprland.homeManagerModules.default
-  ];
+  imports = [];
   config = {
     gtk = {
       enable = true;
@@ -391,7 +389,7 @@ apply-hm-env = pkgs.writeShellScript "apply-hm-env" ''
         enable = true;
         font = {
           name = "JetbrainsMono";
-          size = 8;
+          size = 10;
         };
         settings = {
           foreground = "#979eab";
@@ -514,6 +512,7 @@ apply-hm-env = pkgs.writeShellScript "apply-hm-env" ''
         pinentryFlavor = "gnome3";
         enableSshSupport = true;
       };
+      mako.enable = true;
     };
     systemd.user = {
       services = {
@@ -526,67 +525,25 @@ apply-hm-env = pkgs.writeShellScript "apply-hm-env" ''
         };
       };
     };
-    wayland.windowManager.hyprland = {
-      enable = true;
-      systemdIntegration = true;
-      package = inputs.hyprland.packages.${pkgs.system}.default.override {
-        nvidiaPatches = true;
+    wayland.windowManager.sway = {
+      config = {
+        gaps = {
+          inner = 5;
+          outer = 5;
+        };
+        menu = "bemenu-run";
+        modifier = "Mod4";
+        terminal = "kitty";
       };
-      extraConfig = builtins.readFile ./hyprland/hyprland.conf;
-    };
-    xdg = {
       enable = true;
-      configFile = {
-        "anyrun/config.ron".text = ''
-          Config(
-            close_on_click: true,
-            width: Fraction(0.3),
-            position: Center,
-            vertical_offset: Absolute(15),
-            hide_icons: false,
-            ignore_exclusive_zones: false,
-            layer: Overlay,
-            hide_plugin_info: true,
-            plugins: [
-              "${anyrun}/lib/libapplications.so",
-              "${anyrun}/lib/librandr.so",
-              "${anyrun}/lib/librink.so",
-              "${anyrun}/lib/libshell.so",
-              "${anyrun}/lib/libsymbols.so",
-              "${anyrun}/lib/libtranslate.so",
-            ],
-          )
-        '';
-        "anyrun/style.css".text = ''
-          * {
-            transition: 200ms ease-out;
-            font-family: Lexend;
-          }
-          #window,#match,#entry,#plugin,#main {
-            background: transparent;
-          }
-          #match: {
-            padding: 3px;
-            border-radius: 5px;
-          }
-          #match:selected {
-            background: rgba(203, 166, 247, 0.7);
-          }
-          #entry {
-            border-radius: 5px;
-          }
-          box#main {
-            background: rgba(30, 30, 46, 0.7);
-            border: 1px solid #28283d;
-            border-radius: 5px;
-            padding: 8px;
-          }
-          row:first-child {
-            margin-top: 6px;
-          }
-        '';
-        "waybar/style.css".text = import ./waybar/style.nix;    
-      };
+      extraConfig = ''
+        bindsym XF86MonBrightnessDown exec light -U 10
+        bindsym XF86MonBrightnessUp exec light -A 10
+        bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'
+        bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
+        bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
+      '';
     };
+    xdg.enable = true;
   };
 }
