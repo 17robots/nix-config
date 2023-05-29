@@ -234,7 +234,7 @@ apply-hm-env = pkgs.writeShellScript "apply-hm-env" ''
               "webgl.disabled" = true;
               "privacy.trackingprotection.cryptomining.enabled" = true;
               "privacy.trackingprotection.fingerprinting.enabled" = true;
-             "gecko.handlerService.schemes.mailto.0.name" = "";
+              "gecko.handlerService.schemes.mailto.0.name" = "";
               "gecko.handlerService.schemes.mailto.1.name" = "";
               "handlerService.schemes.mailto.1.uriTemplate" = "";
               "gecko.handlerService.schemes.mailto.0.uriTemplate" = "";
@@ -417,6 +417,7 @@ apply-hm-env = pkgs.writeShellScript "apply-hm-env" ''
       };
       man.enable = true;
       neovim.enable = true;
+      nix-index.enable = true;
       nushell.enable = true;
       starship = {
         enable = true;

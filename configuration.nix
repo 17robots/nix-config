@@ -1,7 +1,4 @@
 { config, inputs, pkgs, lib, ... }:
-let
-  inherit (inputs.anyrun.packages.${pkgs.system}) anyrun;
-in
 {
   boot.loader = {
     systemd-boot.enable = true;
@@ -19,7 +16,6 @@ in
       "nix/flake-channels/home-manager".source = inputs.home-manager;
     };
     systemPackages = with pkgs; [
-      # anyrun
       appimage-run
       bat
       bemenu
@@ -56,10 +52,13 @@ in
       man
       mesa
       most
+      nix-ld
       nodejs_20
       nodePackages_latest.npm
       nodePackages_latest.pnpm
+      nodePackages_latest.prisma
       nushell
+      openssl
       pamixer
       pngquant
       podman-compose
@@ -104,8 +103,6 @@ in
       QT_QPA_PLATFORM_THEME = "qt5ct";
       QT_STYLE_OVERRIDE = "kvantum";
       MOZ_ENABLE_WAYLAND = "1";
-      # WLR_BACKEND = "vulkan";
-      # WLR_RENDERER = "vulkan";
       WLR_NO_HARDWARE_CURSORS = "1";
       XDG_SESSION_TYPE = "wayland";
       XDG_CONFIG_HOME = "$HOME/.config";

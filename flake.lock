@@ -1,25 +1,5 @@
 {
   "nodes": {
-    "anyrun": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1683202497,
-        "narHash": "sha256-ViFgWVzW/sK14DSMC6/uxnkgOFUOtjghagpvqosEo24=",
-        "owner": "Kirottu",
-        "repo": "anyrun",
-        "rev": "9f920a2108117c895f1dbda3a209eb4133cd2990",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Kirottu",
-        "repo": "anyrun",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -74,7 +54,6 @@
     },
     "root": {
       "inputs": {
-        "anyrun": "anyrun",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs"
