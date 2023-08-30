@@ -21,68 +21,53 @@
       bemenu
       brightnessctl
       cached-nix-shell
-      comma
       ctop
-      curlie
       dconf
-      ddgr
       discord
       docker-compose
       dua
       duf
       dunst
+      dwl
       exa
       fd
       fdupes
       ffmpeg
+      fnm
       fzf
       gcc
       gh
       gnumake
       go
-      gping
-      grim
-      hyperfine
       jq
       just
       libnotify
-      libreoffice-fresh-unwrapped
       libsixel
       macchina
       man
-      mesa
       most
       nix-ld
-      nodejs_20
       nodePackages_latest.npm
       nodePackages_latest.pnpm
       nodePackages_latest.prisma
-      nushell
       openssl
       pamixer
+      pkg-config
       pngquant
-      podman-compose
       procs
       ripgrep
-      rm-improved
       rustup
       scc
       slurp
-      speedtest-cli
-      starship
+      stack
       swappy
       swaybg
       tdesktop
-      tldr
-      topgrade
-      transmission-gtk
-      tre-command
       unzip
       waybar
       wf-recorder
       wl-clipboard
       xh
-      yarn
     ];
     variables = {
       BROWSER = "firefox";
@@ -116,8 +101,7 @@
     "/nix".options = ["compress=zstd" "noatime"];
   };
   fonts = {
-    enableDefaultFonts = false;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       jetbrains-mono
       iosevka-bin
       noto-fonts
@@ -282,12 +266,11 @@
       "wireshark"
     ];
     isNormalUser = true;
-    shell = pkgs.nushell;
+    # shell = pkgs.nushell;
   };
   time.timeZone = "US/Eastern";
   virtualisation = {
     docker.enable = true;
-    podman.enable = true;
   };
   xdg.portal = {
     enable = true;
