@@ -8,7 +8,7 @@
       wf-recorder
       wl-clipboard
     ];
-    variabls = {
+    variables = {
       ANKI_WAYLAND = "1";
       CLUTTER_BACKEND = "wayland";
       GDK_BACKEND = "wayland";

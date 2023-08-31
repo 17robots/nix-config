@@ -12,7 +12,6 @@
         config.pager = "less -FR";
       };
       btop.enable = true;
-      dconf.enable = true;
       dircolors.enable = true;
       direnv = {
         enable = true;
@@ -64,5 +63,4 @@
       zoxide.enable = true;
     };
   };
-  imports = [];
 }

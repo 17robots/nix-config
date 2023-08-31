@@ -7,6 +7,7 @@
       brightnessctl
       cached-nix-shell
       ctop
+      dconf
       discord
       docker-compose
       dua

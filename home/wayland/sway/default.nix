@@ -11,7 +11,7 @@ in {
   ];
   config = {
     systemd.user = {
-      services {
+      services = {
         swaybg = mkService {
           Unit.Description = "Wallpaper Chooser";
           Service = {
