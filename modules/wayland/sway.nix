@@ -6,6 +6,6 @@
     ];
   }; 
   imports = [
-    ../common.nix
+    ./common.nix
   ];
 }
