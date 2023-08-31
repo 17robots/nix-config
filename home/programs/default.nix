@@ -12,12 +12,15 @@
         config.pager = "less -FR";
       };
       btop.enable = true;
+      dconf.enable = true;
       dircolors.enable = true;
       direnv = {
         enable = true;
         nix-direnv.enable = true;
       };
       exa.enable = true;
+      fzf.enable = true;
+      gh.enable = true;
       git = {
         delta.enable = true;
         enable = true;
@@ -50,11 +53,14 @@
         userName = "17robots";
         userEmail = "mdray@ameritech.net";
       };
+      go.enable = true;
       gpg.enable = true;
       home-manager.enable = true;
+      jq.enable = true;
       man.enable = true;
       neovim.enable = true;
       nix-index.enable = true;
+      ripgrep.enable = true;
       zoxide.enable = true;
     };
   };

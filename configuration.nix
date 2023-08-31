@@ -3,34 +3,24 @@
   environment = {
     systemPackages = with pkgs; [
       appimage-run
-      bat
       bemenu
       brightnessctl
       cached-nix-shell
       ctop
-      dconf
       discord
       docker-compose
       dua
       duf
-      dunst
-      dwl
-      exa
       fd
       fdupes
       ffmpeg
       fnm
-      fzf
       gcc
-      gh
       gnumake
-      go
-      jq
       just
       libnotify
       libsixel
       macchina
-      man
       most
       nix-ld
       nodePackages_latest.npm
@@ -41,12 +31,8 @@
       pkg-config
       pngquant
       procs
-      ripgrep
       rustup
       scc
-      slurp
-      stack
-      swappy
       tdesktop
       unzip
       xh

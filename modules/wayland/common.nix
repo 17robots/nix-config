@@ -2,6 +2,8 @@
 {
  environment = {
     systemPackages = with pkgs; [
+      slurp
+      swappy
       waybar
       wf-recorder
       wl-clipboard
