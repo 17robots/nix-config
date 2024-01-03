@@ -176,7 +176,7 @@
       "wireshark"
     ];
     isNormalUser = true;
-    # shell = pkgs.nushell;
+    shell = pkgs.nushell;
   };
   time.timeZone = "US/Eastern";
   virtualisation = {

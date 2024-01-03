@@ -5,6 +5,7 @@
       appimage-run
       bemenu
       brightnessctl
+      bun
       cached-nix-shell
       ctop
       dconf
@@ -17,16 +18,12 @@
       ffmpeg
       fnm
       gcc
-      gnumake
       just
       libnotify
       libsixel
-      macchina
       most
       nix-ld
-      nodePackages_latest.npm
       nodePackages_latest.pnpm
-      nodePackages_latest.prisma
       openssl
       pamixer
       pkg-config
@@ -34,7 +31,6 @@
       procs
       rustup
       scc
-      tdesktop
       unzip
       xh
     ];

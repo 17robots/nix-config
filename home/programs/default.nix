@@ -17,7 +17,7 @@
         enable = true;
         nix-direnv.enable = true;
       };
-      exa.enable = true;
+      eza.enable = true;
       fzf.enable = true;
       gh.enable = true;
       git = {
@@ -60,7 +60,7 @@
       neovim.enable = true;
       nix-index.enable = true;
       ripgrep.enable = true;
-      zoxide.enable = true;
+      starship.enable = true;
     };
   };
 }
