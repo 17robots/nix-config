@@ -6,16 +6,16 @@
     nixos-hardware.url = "github:Nixos/nixos-hardware/master";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-  };
 
-  outputs = inputs@{ nixpkgs, nixos-hardware, home-manager, ... }: let 
     browser = "firefox";
-    system = "x86_64-linux";
     terminal = "alacritty";
     windowing = "wayland";
     wm = "sway";
+  };
 
-    # env inputs
+  outputs = inputs@{ nixpkgs, nixos-hardware, home-manager, ... }: let 
+    system = "x86_64-linux";
+
     pkgs = import nixpkgs {
       system = system;
       overlays = [];
