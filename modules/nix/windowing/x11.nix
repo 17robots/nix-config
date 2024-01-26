@@ -1,10 +1,7 @@
-{ config, inputs, pkgs, lib, ... }:
-let
-  wm = "i3";
-in
+{ config, flags, pkgs, lib, ... }:
 {
  imports = [
-  "./wm/${wm}.nix"
+  ./wm/${flags.wm}.nix
  ];
  services.xserver = {
   enable = true;

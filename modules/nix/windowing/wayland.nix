@@ -1,10 +1,9 @@
-{ config, inputs, pkgs, lib, ... }:
+{ config, flags, pkgs, ... }:
 let
- wm = "sway";
 in
 {
   imports = [
-    "./wm/${wm}.nix"
+    ./wm/${flags.wm}.nix
   ];
   environment = {
     systemPackages = with pkgs; [

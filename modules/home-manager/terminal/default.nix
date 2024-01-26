@@ -1,10 +1,7 @@
-{ inputs, config, pkgs, lib ... }:
-let
-  terminal = "alacritty";
-in
+{ flags, config, ... }:
 {
   imports = [
-  ./${terminal}.nix
+  ./${flags.terminal}.nix
   ];
 }
 

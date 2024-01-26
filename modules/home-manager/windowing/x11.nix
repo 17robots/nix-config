@@ -1,11 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{ flags, config, pkgs, lib, ... }:
 let
-  wm = "i3";
   bar = "";
 in
 {
   imports = [
-    ./wm/${wm}.nix
+    ./wm/${flags.wm}.nix
     ./bar/${bar}.nix
   ];
   config = {
