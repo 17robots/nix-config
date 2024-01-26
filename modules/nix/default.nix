@@ -13,5 +13,5 @@
     ./users.nix
     ./xdg.nix
     "./windowing/${inputs.windowing}.nix"
-  ]
+  ];
 }
