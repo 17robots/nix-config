@@ -10,7 +10,6 @@ with lib; {
     home = {
       packages = with pkgs;
       [
-        run-as-service
         graphite-cli
       ];
       sessionVariables = {

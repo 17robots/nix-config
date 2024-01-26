@@ -12,7 +12,6 @@
       "nix/flake-channels/home-manager".source = inputs.home-manager;
     };
     systemPackages = with pkgs; [
-      appimage-run
       bemenu
       brightnessctl
       bun

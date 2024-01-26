@@ -1,12 +1,21 @@
-{ config, ... }:
+{ ... }:
 {
   config = {
     programs = {
       alacritty = {
         enable = true;
-        settings.font = {
-          family = "JetbrainsMono";
-          size = 10;
+        settings = {
+          colors = {
+            bright = {};
+            normal = {};
+            primary = {};
+          };
+          font = {
+            normal = {
+              family = "JetbrainsMono";
+            };
+            size = 10;
+          };
         };
       };
     };
