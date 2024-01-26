@@ -1,6 +1,6 @@
-{ inputs, config, pkgs, lib, ... }:
+{ flags, config, pkgs, lib, ... }:
 {
   imports = [
-    "./${inputs.windowing}.nix"
+    "./${flags.windowing}.nix"
   ];
 }

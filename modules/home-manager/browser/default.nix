@@ -1,9 +1,9 @@
-{ inputs, config, pkgs, lib, windowing, ... }:
+{ flags, ... }:
 let
   browser = "firefox";
 in
 {
   imports = [
-    "${inputs.browser}-${inputs.windowing}"
+    "${flags.browser}-${inputs.windowing}"
   ];
 }

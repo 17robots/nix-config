@@ -7,13 +7,15 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    browser = "firefox";
-    terminal = "alacritty";
-    windowing = "wayland";
-    wm = "sway";
   };
 
   outputs = inputs@{ nixpkgs, nixos-hardware, home-manager, ... }: let 
+    flags = {
+      browser = "firefox";
+      terminal = "alacritty";
+      windowing = "wayland";
+      wm = "sway";
+    };
     system = "x86_64-linux";
 
     pkgs = import nixpkgs {
@@ -32,12 +34,12 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.mdray = ./modules/home-manager;
-            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.extraSpecialArgs = {inherit inputs; inherit flags;};
           }
           ./modules/nix # config
           ./hosts/laptop/hardware-configuration.nix
         ];
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs; inherit flags;};
       };
     };
   };

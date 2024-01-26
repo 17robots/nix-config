@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ flags, config, pkgs, lib, ... }:
 with lib; let
   mkService = lib.recursiveUpdate {
     Unit.After = ["graphical-session.target"];
@@ -26,7 +26,7 @@ in {
         };
         menu = "bemenu-run";
         modifier = "Mod4";
-        terminal = inputs.terminal;
+        terminal = flags.terminal;
       };
       enable = true;
       extraConfig = ''
