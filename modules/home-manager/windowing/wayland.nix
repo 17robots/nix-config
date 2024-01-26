@@ -1,6 +1,6 @@
 { flags, ... }:
 let
-  bar = "swaybar";
+  bar = "waybar";
 in
 {
   imports = [
