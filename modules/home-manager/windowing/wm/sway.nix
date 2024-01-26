@@ -26,7 +26,7 @@ in {
         };
         menu = "bemenu-run";
         modifier = "Mod4";
-        terminal = "kitty";
+        terminal = inputs.terminal;
       };
       enable = true;
       extraConfig = ''
