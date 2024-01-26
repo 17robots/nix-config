@@ -24,18 +24,22 @@ with lib; let
   '';
 in {
   imports = [
-    ./browser/firefox
-    ./terminal/kitty
+    ./browser/firefox.nix
+    ./terminal/kitty.nix
     ./wayland
-    ./wayland/wm/sway
-    ./cli
-    ./git
-    ./gtk
-    ./services
+    ./wayland/wm/sway.nix
+    ./cli.nix
+    ./git.nix
+    ./gtk.nix
+    ./services.nix
   ];
   config = {
     home = {
-      packages = [run-as-service];
+      packages = with pkgs;
+      [
+        run-as-service
+        graphite-cli
+      ];
       sessionVariables = {
         XCURSOR_SIZE = "8";
       };

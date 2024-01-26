@@ -8,7 +8,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ nixpkgs, nixos-hardware, home-manager, channels, ... }: let 
+  outputs = inputs@{ nixpkgs, nixos-hardware, home-manager, ... }: let 
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       system = system;
@@ -26,7 +26,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.mdray = ./modules/home-manager;
-            home-manager.extraSpecialArgs = {inherit inputs; inherit channels;};
+            home-manager.extraSpecialArgs = {inherit inputs;};
           }
           ./modules/nix # config
           ./hosts/laptop/hardware-configuration.nix

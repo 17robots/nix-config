@@ -1,17 +1,18 @@
 { config, ... }:
 {
   imports = [
-    ./boot
-    ./environment
-    ./filesystems
-    ./font
-    ./hardware
-    ./nix
-    ./security
-    ./services
-    ./users
-    ./xdg
-    ./windowing/wayland
-    ./wm/sway
+    ./boot.nix
+    ./environment.nix
+    ./filesystems.nix
+    ./font.nix
+    ./hardware.nix
+    ./network.nix
+    ./nix.nix
+    ./security.nix
+    ./services.nix
+    ./users.nix
+    ./xdg.nix
+    ./windowing/wayland.nix
+    ./wm/sway.nix
   ];
 }

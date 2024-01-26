@@ -1,5 +1,10 @@
-{ channels, ... }:
-final: prev:
+{ inputs, config, pkgs, lib, ... }:
 {
-  inherit (channels.unstable) firefox-wayland;
+  config = {
+    home = {
+      packages = with pkgs; [
+        firefox-wayland
+      ];
+    };
+  };
 }
