@@ -5,8 +5,8 @@ let
 in
 {
   imports = [
-    "./bar/${bar}.nix"
-    "./wm/${wm}.nix"
+    ./bar/${bar}.nix
+    ./wm/${wm}.nix
   ];
   config = {
     services.mako.enable = true;

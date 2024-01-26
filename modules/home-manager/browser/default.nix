@@ -4,6 +4,6 @@ let
 in
 {
   imports = [
-    "${flags.browser}-${inputs.windowing}"
+    ./${flags.browser}-${inputs.windowing}
   ];
 }

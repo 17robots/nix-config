@@ -5,8 +5,8 @@ let
 in
 {
   imports = [
-    "./wm/${wm}.nix"
-    "./bar/${bar}.nix"
+    ./wm/${wm}.nix
+    ./bar/${bar}.nix
   ];
   config = {
     services.dunst.enable = true;

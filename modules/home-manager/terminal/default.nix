@@ -4,7 +4,7 @@ let
 in
 {
   imports = [
-  "./${terminal}.nix"
+  ./${terminal}.nix
   ];
 }
 

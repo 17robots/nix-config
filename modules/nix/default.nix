@@ -1,4 +1,4 @@
-{ config, flags, ... }:
+{ config, ... }:
 {
   imports = [
     ./boot.nix
@@ -12,6 +12,6 @@
     ./services.nix
     ./users.nix
     ./xdg.nix
-    "./windowing/${flags.windowing}.nix"
+    ./windowing
   ];
 }

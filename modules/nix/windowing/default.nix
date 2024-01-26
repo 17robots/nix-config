@@ -1,4 +1,4 @@
-{ flags, config, pkgs, lib, ... }:
+{ config, flags, ... }:
 {
   imports = [
     ./${flags.windowing}.nix
