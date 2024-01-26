@@ -1,4 +1,4 @@
-{ flags, config, pkgs, lib, ... }:
+{ flags, pkgs, lib, ... }:
 with lib; let
   mkService = lib.recursiveUpdate {
     Unit.After = ["graphical-session.target"];

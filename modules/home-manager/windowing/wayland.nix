@@ -1,4 +1,4 @@
-{ flags, config, pkgs, lib, ... }:
+{ flags, ... }:
 let
   bar = "swaybar";
 in

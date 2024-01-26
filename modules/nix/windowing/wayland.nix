@@ -1,6 +1,4 @@
-{ config, flags, pkgs, ... }:
-let
-in
+{ flags, pkgs, ... }:
 {
   imports = [
     ./wm/${flags.wm}.nix

@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 with lib; let
   mod = "Mod4";
 in {

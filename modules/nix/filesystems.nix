@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 {
   fileSystems = {
     "/".options = ["compress=zstd"];

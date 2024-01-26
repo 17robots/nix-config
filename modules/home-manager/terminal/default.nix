@@ -1,4 +1,4 @@
-{ flags, config, ... }:
+{ flags, ... }:
 {
   imports = [
   ./${flags.terminal}.nix

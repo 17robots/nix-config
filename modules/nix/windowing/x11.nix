@@ -1,4 +1,4 @@
-{ config, flags, pkgs, lib, ... }:
+{ flags, ... }:
 {
  imports = [
   ./wm/${flags.wm}.nix

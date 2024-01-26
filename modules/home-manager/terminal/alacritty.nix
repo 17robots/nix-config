@@ -4,11 +4,10 @@
     programs = {
       alacritty = {
         enable = true;
-        font = {
-          name = "JetbrainsMono";
+        settings.font = {
+          family = "JetbrainsMono";
           size = 10;
         };
-        theme = "Rosé Pine";
       };
     };
   };
