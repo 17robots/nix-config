@@ -11,6 +11,7 @@ with lib; {
       packages = with pkgs;
       [
         graphite-cli
+        zig
       ];
       sessionVariables = {
         XCURSOR_SIZE = "8";

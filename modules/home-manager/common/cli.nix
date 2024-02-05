@@ -16,10 +16,20 @@
       fzf.enable = true;
       gh.enable = true;
       gpg.enable = true;
+      helix = {
+        editor = true;
+        enable = true;
+        settings = {
+          theme = "base16_transparent";
+          editor = {
+            line-number = "relative";
+            lsp.display-messages = true;
+          };
+        };
+      };
       home-manager.enable = true;
       jq.enable = true;
       man.enable = true;
-      neovim.enable = true;
       nix-index.enable = true;
       ripgrep.enable = true;
       starship.enable = true;
