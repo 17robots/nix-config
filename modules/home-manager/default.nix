@@ -10,8 +10,8 @@ with lib; {
     home = {
       packages = with pkgs;
       [
-        graphite-cli
-        zig
+        bun
+        obsidian
       ];
       sessionVariables = {
         XCURSOR_SIZE = "8";

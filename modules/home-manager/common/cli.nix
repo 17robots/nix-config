@@ -17,10 +17,10 @@
       gh.enable = true;
       gpg.enable = true;
       helix = {
-        editor = true;
+        defaultEditor = true;
         enable = true;
         settings = {
-          theme = "base16_transparent";
+          theme = "onedarker";
           editor = {
             line-number = "relative";
             lsp.display-messages = true;
@@ -31,6 +31,7 @@
       jq.enable = true;
       man.enable = true;
       nix-index.enable = true;
+      neovim.enable = true;
       ripgrep.enable = true;
       starship.enable = true;
     };
