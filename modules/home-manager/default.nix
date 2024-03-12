@@ -11,7 +11,7 @@ with lib; {
       packages = with pkgs;
       [
         bun
-        obsidian
+        mods
       ];
       sessionVariables = {
         XCURSOR_SIZE = "8";

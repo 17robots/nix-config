@@ -33,7 +33,7 @@
       nix-index.enable = true;
       neovim.enable = true;
       ripgrep.enable = true;
-      starship.enable = true;
+      # starship.enable = true;
     };
   };
 }

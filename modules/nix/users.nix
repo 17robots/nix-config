@@ -18,6 +18,6 @@
       "wireshark"
     ];
     isNormalUser = true;
-    shell = pkgs.nushell;
+    shell = pkgs.bash ;
   };
 }
