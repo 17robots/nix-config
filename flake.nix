@@ -1,46 +1,43 @@
 {
-  description = "NixOS configuration";
+  description = "NixOS systems and tools based on mitchellh's config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "github:Nixos/nixos-hardware/master";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    zig.url = "github:mitchellh/zig-overlay";
   };
 
-  outputs = inputs@{ nixpkgs, nixos-hardware, home-manager, ... }: let 
-    flags = {
-      browser = "firefox";
-      terminal = "alacritty";
-      windowing = "wayland";
-      wm = "sway";
-    };
-    system = "x86_64-linux";
+  outputs = { self, nixpkgs-unstable, nixpkgs, home-manager, ...}@inputs: let
+    overlays = [
+      inputs.zig.overlays.default
+    ];
 
-    pkgs = import nixpkgs {
-      system = system;
-      overlays = [];
-      allowUnfree = true;
+    mkSystem = import ./lib/mksystem.nix {
+      inherit overlays nixpkgs inputs;
     };
   in {
-    nixosConfigurations = {
-      laptop = nixpkgs.lib.nixosSystem {
-        system = system;
-        modules = [
-          nixos-hardware.nixosModules.dell-xps-15-9500
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.mdray = ./modules/home-manager;
-            home-manager.extraSpecialArgs = {inherit inputs; inherit flags;};
-          }
-          ./modules/nix # config
-          ./hosts/laptop/hardware-configuration.nix
-        ];
-        specialArgs = {inherit inputs; inherit flags;};
-      };
+    nixosConfigurations.laptop = mkSystem "laptop" {
+      system = "x86_64-linux";
+      user = "17robots";
+    };
+    nixosConfigurations.wsl = mkSystem "wsl" {
+      system = "x86_64-linux";
+      user = "17robots";
+      wsl = true;
     };
   };
 }
