@@ -1,131 +1,59 @@
-{ isWSL, inputs, ... }:
-{ config, lib, pkgs, ... }:
-let
-  isLinux = pkgs.stdenv.isLinux;
-  manpager = (pkgs.writeShellScriptBin "manpager" (''
-    cat "$1" | col -bx | bat --language man --style plain
-  ''));
+{isWsl, inputs, shell, desktop, terminal, user, editor, ...}:
+{ config, lib, pkgs, ... }: let
+  moduleDir = ../../modules
 in {
-  home.stateVersion = "23.11";
-
-  xdg.enable = true;
-
-  home.packages = [
-    pkgs.bat
-    pkgs.fd
-    pkgs.fzf
-    pkgs.gh
-    pkgs.htop
-    pkgs.jq
-    pkgs.ripgrep
-    pkgs.tree
-    pkgs.watch
-    pkgs.zigpkgs."0.12.0"
-    pkgs.nodejs
-  ] ++ (lib.optionals (isLinux && !isWSL) [
-    pkgs.firefox
-    pkgs.wofi
+  imports = [
+    ./${moduleDir}/git.nix
+    ./${moduleDir}/gpg.nix
+    ./${moduleDir}/shells/${shell}.nix
+    ./${moduleDir}/editors/${editor}.nix
+  ] ++ (lib.optionals (!isWsl && pkgs.stdenv.isLinux) [
+    ./${moduleDir}/desktops/${desktop}.nix
+    ./${moduleDir}/terminals/${terminal}.nix
   ]);
-
-  home.sessionVariables = {
-    LANG = "";
-    LC_CTYPE = "";
-    LC_ALL = "";
-    EDITOR = "nvim";
-    MANPAGER = "${manpager}/bin/manpager";
-  };
-
-  programs.gpg.enable = true;
-  programs.bash = {
-    enable = true;
-    shellOptions = [];
-    historyControl = ["ignoredups" "ignorespace"];
-    initExtra = builtins.readFile ./bashrc;
-
-    shellAliases = {
+  xdg.enable = true;
+  home = {
+    homeDirectory = lib.mkForce if pkgs.stdenv.isLinux then "/home/${user}" else "/Users/${user}";
+    packages = with pkgs; [
+      bash-completion
+      bat
+      bun
+      coreutils
+      curl
+      eza
+      fd
+      fundutils
+      fzf
+      git
+      git-lfs
+      gnumake
+      gnupg
+      gnused
+      htop
+      jq
+      just
+      nodejs
+      ripgrep
+      tree
+      uv
+      watch
+      zig
+    ];
+    pointerCursor = {
+      package = pkgs.vanilla-dmz;
+      name = "Vanilla-DMZ";
     };
-  };
-  programs.direnv = {
-    enable = true;
-
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "17robots";
-    userEmail = "mdray@duck.com";
-    signing = {
-      key = "";
-      signByDefault = true;
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      GIT_EDITOR = "nvim";
     };
-    aliases = {
-      cleanup = "";
-      prettylog = "";
-      root = "";
-    };
-    extraConfig = {
-      branch.autosetuprebase = "always";
-      color.ui = true;
-      core.askPass = "";
-      credential.helper = "store";
-      github.user = "17robots";
-      push.default = "tracking";
-      init.defaultBranch = "main";
-    };
+    username = user;
   };
-
-  programs.tmux = {
-    enable = true;
-    terminal = "xterm-256color";
-    shortcut = "1";
-    secureSocket = false;
-    extraConfig = ''
-      set -ga terminal-overrides ",*256col*:TC"
-
-      set -g @dracula-show-battery false
-      set -g @dracula-show-network false
-      set -g @dracula-show-weather false
-
-      bind -n C-k send-keys "clear"\; send-keys "Enter"
-    '';
-  };
-
-  programs.alacritty = {
-    enable = !isWSL;
-    settings = {
-      env.TERM = "xterm-256color";
-    };
-  };
-
-  programs.kitty = {
-    enable = !isWSL && false;
-    extraConfig = builtins.readFile ./kitty;
-  };
-
-  programs.neovim = {
-    enable = true;
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
-  };
-
-  services.gpg-agent = {
-    enable = true;
-    pinentryPackage = pkgs.pinentry-tty;
-
-    defaultCacheTtl = 31536000;
-    maxCacheTtl = 31536000;
-  };
-
-  home.pointerCursor = lib.mkIf (isLinux && !isWSL) {
-    name = "Vanilla-DMZ";
-    package = pkgs.vanilla-dmz;
-    size = 128;
-  };
-
-  wayland.windowManager.sway = {
-    enable = !isWSL;
-    config = rec {
-      modifier = "Mod4";
-      terminal = "alacritty";
-    };
-  };
+  programs.direnv.enable = true;
+  programs.fonts.fontConfig.enable = true;
+  programs.home-manager.enable = true;
+  programs.man.enable = true;
+  programs.ssh.enable = true;
+  programs.ssh.addKeysToAgent = true;
 }

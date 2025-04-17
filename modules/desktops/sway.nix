@@ -1,9 +1,10 @@
-{ pkgs, lib, inputs, ...}: {
+{ pkgs, lib, inputs, isWsl, ...}: {
   home.packages = with pkgs; [
+    clipman
     wmenu
   ];
   wayland.windowManager.sway = {
-    enable = true;
+    enable = !isWSL;
     config = rec {
       modifier = "Mod4";
       terminal = "ghostty";
@@ -13,3 +14,4 @@
     };
   };
 }
+

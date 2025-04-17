@@ -18,3 +18,4 @@
     historyIgnore = ["exit"];
   };
 }
+
