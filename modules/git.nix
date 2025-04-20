@@ -1,23 +1,8 @@
 {
   programs.git = {
     enable = true;
-    userName = "17robots";
-    userEmail = "mdray@duck.com";
-    signing = {
-      key = "";
-      signByDefault = true;
-    };
     extraConfig = {
-      github.user = "17robots";
-      init.defaultBranch = "main";
-      pull.rebase = true;
       apply.whitespace = "fix";
-      core = {
-        excludesfile = "~/.gitignore";
-        attributesfile = "~/.gitattributes";
-        whitespace = "space-before-tab, -indent-with-non-tab, trailing-space";
-        trustctime = false;
-      };
       color = {
         ui = "auto";
         branch = {
@@ -37,9 +22,30 @@
           untracked = "cyan";
         };
       };
+      commit.gpgsign = true;
+      config.pull.rebase = true;
+      core = {
+        excludesfile = "~/.gitignore";
+        attributesfile = "~/.gitattributes";
+        whitespace = "space-before-tab, -indent-with-non-tab, trailing-space";
+        trustctime = false;
+      };
       diff.renames = "copies";
+      filter.lfs = {
+        clean = "git-lfs clean -- %f";
+        smudge = "git-lfs smudge -- %f";
+        process = "git-lfs filter-process";
+        required = true;
+      };
+      github.user = "17robots";
+      gpg.format = "ssh";
+      gpg.ssh.allowedsignersFiler = "";
       help.autocorrect = 1;
+      init.defaultBranch = "main";
       merge.log = true;
+      merge.stat = true;
+      pull.ff = "only";
+      pull.rebase = true;
       push = {
         default = "simple";
         autoSetupRemote = true;
@@ -73,12 +79,9 @@
           insteadOf = "gist:";
         };
       };
-      filter.lfs = {
-        clean = "git-lfs clean -- %f";
-        smudge = "git-lfs smudge -- %f";
-        process = "git-lfs filter-process";
-        required = true;
-      };
     };
-  };  
+    signing.signByDefault = true;
+    userName = "17robots";
+    userEmail = "mdray@duck.com";
+  };
 }
