@@ -1,4 +1,4 @@
-{ config, pkgs, lib, currentSystem, currentSystemName, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [
 
   ];
@@ -8,13 +8,6 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-  };
-  fonts = {
-    fontDir.enable = true;
-    packages = [
-      pkgs.fira-code
-      pkgs.jetbrains-mono
-    ];
   };
   i18n = {
     defaultLocale = "en_US.UTF-8";

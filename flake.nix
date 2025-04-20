@@ -11,9 +11,9 @@
     nvim-config.url = "github:17robots/nvim-config";
     nvim-config.flake = false;
   };
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, nvim-config, ... }@inputs: let
     overlays = [];
-    mkSystem = import ./lib/mkSystem.nix {
+    mkSystem = import ./lib/mkSys.nix {
       inherit overlays nixpkgs inputs;
     };
   in {
