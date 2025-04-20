@@ -12,6 +12,7 @@ in {
     "${moduleDir}/gpg.nix"
   ]);
   xdg.enable = true;
+  xdg.configFile."nvim".source = inputs.nvim-config.outPath;
   home = {
     packages = with pkgs; [
       bash-completion
@@ -23,6 +24,7 @@ in {
       fd
       findutils
       fzf
+      gcc
       git
       git-lfs
       gnumake

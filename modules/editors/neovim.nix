@@ -1,5 +1,5 @@
 { config, pkgs, inputs,  ... }: {
-  xdg.configFile."nvim".source = inputs.nvim-config.outPath;
+  # xdg.configFile."nvim".source = inputs.nvim-config.outPath;
   programs.neovim = {
     enable = true;
     viAlias = true;
