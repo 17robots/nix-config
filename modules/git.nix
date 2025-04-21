@@ -80,6 +80,7 @@
         };
       };
     };
+    signing.key = "~/.ssh/id_ed25519";
     signing.signByDefault = true;
     userName = "17robots";
     userEmail = "mdray@duck.com";
