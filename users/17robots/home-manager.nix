@@ -35,7 +35,9 @@ in {
       just
       nodejs
       ripgrep
+      rustup
       tree
+      unzip
       uv
       watch
       zig
